@@ -3,6 +3,7 @@
 
 class Chip8 {
 
+private:
 	unsigned short pc_;
 	unsigned short sp_;
 	unsigned short I_;
@@ -12,7 +13,14 @@ class Chip8 {
 	unsigned char graphics_[64 * 32];
 	unsigned char V_[16];
 	unsigned short stack_[16];
+	unsigned char key_[16];
 
+public:
+	Chip8();
+	~Chip8();
+
+	void initialize();
+	void emulate_cycle();
 
 };
 
