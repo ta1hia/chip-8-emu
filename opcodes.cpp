@@ -85,8 +85,52 @@ int Chip8::op_8XY0() {
     return SUCCESS;
 }
 
+int Chip::op_8XY1() {
+    /* Sets VX to VX OR VY. */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    NIBBLE y = (opcode_ & 0x00F0) >> 4;
+
+    V_[x] = x | y;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip::op_8XY2() {
+    /* Sets VX to VX AND VY. */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    NIBBLE y = (opcode_ & 0x00F0) >> 4;
+
+    V_[x] = x & y;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip::op_8XY3() {
+    /* Sets VX to VX XOR VY. */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    NIBBLE y = (opcode_ & 0x00F0) >> 4;
+
+    V_[x] = x ^ y;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip::op_8XY4() {
+    /* Adds VY to VX. VF is set to 1 when there's a carry, and to 0 when there isn't. */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    NIBBLE y = (opcode_ & 0x00F0) >> 4;
+
+    NIBBLE buffer = V_[x] + V_[y];
+
+    V_[CARRY_FLAG] = (buffer & 0xF0) >> 4;
+    V_[x] = V_[x] + V_[y];
+
+    pc_ = pc_ +  2;
+    return SUCCESS;
+}
+
 int Chip8::op_9XY0() {
-	/* Skips the next instruction if VX doesn't equal VY */
+    /* Skips the next instruction if VX doesn't equal VY */
 	NIBBLE x = (opcode_ & 0x0F00) >> 8;
 	NIBBLE y = (opcode_ & 0x00F0) >> 4;
 	

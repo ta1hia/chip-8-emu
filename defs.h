@@ -8,6 +8,7 @@
 #define REGISTER_SIZE_16	16
 
 #define MAX_BUFFER_SIZE		4096
+#define CARRY_FLAG =        15
 
 #define SUCCESS			 0
 #define FAILURE			-1

@@ -89,7 +89,9 @@ private:
 	int op_5XY0();
 	int op_6XNN();
 	int op_7XNN();
- 	int op_8XY0();
+ 
+    int op_8XY0();
+    int op_8XY1();
 
 	int op_9XY0();
 	int op_ANNN();
