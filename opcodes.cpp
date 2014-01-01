@@ -86,7 +86,7 @@ int Chip8::op_8XY0() {
     return SUCCESS;
 }
 
-int Chip::op_8XY1() {
+int Chip8::op_8XY1() {
     /* Sets VX to VX OR VY. */
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
@@ -96,7 +96,7 @@ int Chip::op_8XY1() {
     return SUCCESS;
 }
 
-int Chip::op_8XY2() {
+int Chip8::op_8XY2() {
     /* Sets VX to VX AND VY. */
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
@@ -106,7 +106,7 @@ int Chip::op_8XY2() {
     return SUCCESS;
 }
 
-int Chip::op_8XY3() {
+int Chip8::op_8XY3() {
     /* Sets VX to VX XOR VY. */
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
@@ -116,7 +116,7 @@ int Chip::op_8XY3() {
     return SUCCESS;
 }
 
-int Chip::op_8XY4() {
+int Chip8::op_8XY4() {
     /* Adds VY to VX. VF is set to 1 when there's a carry, and to 0 when there isn't. */
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;

@@ -21,6 +21,9 @@ unsigned char chip8_fontset[FONTSET_SIZE] =
 	0xF0, 0x80, 0xF0, 0x80, 0x80  //F
 };
 
+Chip8::Chip8() {}
+Chip8::~Chip8() {}
+
 void Chip8::initialize() {
 	/* Initialize system state */
 	pc_ 		= 0x200;
@@ -34,24 +37,24 @@ void Chip8::initialize() {
 	}
 
 	/* Clear stack */
-	for (i = 0; i < STACK_SIZE ; i++) {
+	for (int i = 0; i < STACK_SIZE ; i++) {
 		stack_[i] = 0;
 	}
 	sp_ = 0;
 
 	/* Clear registers V0-VF */
-	for (i = 0; i < REGISTER_SIZE_16 ; i++) {
+	for (int i = 0; i < REGISTER_SIZE_16 ; i++) {
 		V_[i] = 0;
 	}
 		
 	/* Clear memory */
-	for (i = 0; i < RAM_SIZE ; i++) {
+	for (int i = 0; i < RAM_SIZE ; i++) {
 		memory_[i] = 0;
 	}
 
 
 	/* Load fontset - part of interpretter region */
-	for (i = 0; i < FONTSET_SIZE ; i++) {
+	for (int i = 0; i < FONTSET_SIZE ; i++) {
 		memory_[i] = chip8_fontset[i];
 	};
 
@@ -71,8 +74,8 @@ void Chip8::emulate_cycle() {
 	opcode_ = memory_[pc_] << 8 | memory_[pc_ + 1];
 
 	/* Decode & Execute */
-	switch (opcode & 0xF000) {
-		case (0x0000): switch (opcode & 0x00FF) {
+	switch (opcode_ & 0xF000) {
+		case (0x0000): switch (opcode_ & 0x00FF) {
 				       case (0x00E0): 
 					       error = op_00E0();
 					       break;
@@ -94,7 +97,7 @@ void Chip8::emulate_cycle() {
 			       break;
 		case (0x7000): error = op_7XNN();
 			       break;
-		case (0x8000): switch (opcode & 0x000F) {
+		case (0x8000): switch (opcode_ & 0x000F) {
 				       case (0x0000): break;
 				       case (0x0001): break;
 				       case (0x0003): break;
@@ -115,14 +118,14 @@ void Chip8::emulate_cycle() {
 		case (0xC000): error = op_CXNN();
 			       break;
 		case (0xD000): break;
-		case (0xE000): switch (opcode & 0x00FF) {
+		case (0xE000): switch (opcode_ & 0x00FF) {
 				       case (0x009E): error = op_EX9E();
 						      break;
 				       case (0x00A1): break;
 				       default: break;
 			       }
 			       break;
-		case (0xF000): switch (opcode & 0x00FF) {
+		case (0xF000): switch (opcode_ & 0x00FF) {
 				       case (0x0007): break;
 				       case (0x000A): break;
 				       case (0x0015): break;
