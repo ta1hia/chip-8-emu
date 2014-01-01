@@ -59,3 +59,22 @@ int Chip8::op_5XY0() {
 	}
 	return SUCCESS;
 }
+
+int Chip8::op_6XNN() {
+	/* Sets VX to NN */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	V_[x] = (opcode_ & 0x00FF);
+	pc_ = pc_ + 2;
+	return SUCCESS;
+}
+
+int Chip8::op_7XNN() {
+	/* Adds NN to VX */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	V_[x] += (opcode_ & 0x00FF);
+	pc_ = pc_ + 2;
+	return SUCCESS;
+}
+
+}
+
