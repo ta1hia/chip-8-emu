@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "chip-8.h"
 
 unsigned char chip8_fontset[FONTSET_SIZE] =
@@ -60,6 +61,9 @@ void Chip8::initialize() {
 	/* Reset timers */
 	delay_timer_ = 0;
 	sound_timer_ = 0;
+
+	/* Initialize rand */
+	srand(time(0));
 
 }
 
