@@ -97,3 +97,10 @@ int Chip8::op_9XY0() {
 	}
 	return SUCCESS;
 }
+
+int Chip8::op_ANNN() {
+	/* Sets I to the address NNN */
+	I_ = (opcode_ & 0x0FFF);
+	pc_ = pc_ + 2;
+	return SUCCESS;
+}
