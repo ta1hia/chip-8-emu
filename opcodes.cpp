@@ -104,3 +104,9 @@ int Chip8::op_ANNN() {
 	pc_ = pc_ + 2;
 	return SUCCESS;
 }
+
+int Chip8::op_BNNN() {
+	/* Jumps to the address NNN plus V0 */
+	pc_ = V_[0] + (opcode_ & 0x0FFF);
+	return SUCCESS;
+}

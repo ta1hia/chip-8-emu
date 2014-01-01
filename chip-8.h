@@ -93,6 +93,7 @@ private:
 
 	int op_9XY0();
 	int op_ANNN();
+	int op_BNNN();
 
 public:
 	Chip8();
