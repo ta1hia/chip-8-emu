@@ -120,3 +120,20 @@ int Chip8::op_CXNN() {
 	pc_ = pc_ + 2;
 	return SUCCESS;
 }
+
+// DXYN here
+
+int Chip8::op_EX9E() {
+	/* Skips the next instruction if the key stored in VX is pressed */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+	if (key_[V_[x]] != 0) {
+		pc_ = pc_ + 4;
+	} else {
+		pc_ = pc_ + 2;
+	} 
+	
+	return SUCCESS;
+}
+
+

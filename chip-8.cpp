@@ -116,7 +116,8 @@ void Chip8::emulate_cycle() {
 			       break;
 		case (0xD000): break;
 		case (0xE000): switch (opcode & 0x00FF) {
-				       case (0x009E): break;
+				       case (0x009E): error = op_EX9E();
+						      break;
 				       case (0x00A1): break;
 				       default: break;
 			       }

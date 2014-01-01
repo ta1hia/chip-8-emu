@@ -95,6 +95,8 @@ private:
 	int op_ANNN();
 	int op_BNNN();
 	int op_CXNN();
+	//DXYN here
+	int op_EX9E();
 	
 public:
 	Chip8();
