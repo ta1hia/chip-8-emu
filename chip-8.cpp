@@ -80,7 +80,8 @@ void Chip8::emulate_cycle() {
 			       break;
 		case (0x2000): error = op_2NNN();
 			       break;
-		case (0x3000): break;
+		case (0x3000): error = op_3XNN();
+			       break;
 		case (0x4000): break;
 		case (0x5000): break;
 		case (0x6000): break;

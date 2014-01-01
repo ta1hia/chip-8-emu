@@ -84,6 +84,7 @@ private:
 	static int op_00E0();	
 	static int op_1NNN();
 	static int op_2NNN();
+	static int op_3XNN();
 
 public:
 	Chip8();

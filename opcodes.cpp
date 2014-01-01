@@ -23,3 +23,15 @@ int Chip8::op_2NNN() {
 	pc = opcode_ & 0x0FFF;
 	return SUCCESS;
 }
+
+int Chip8::op_3XNN() {
+	/* Skips the next instruction if VX equals NN */
+	BYTE x = (opcode_ & 0x0F00) >> 8;
+	SHORT condition = (opcode_ & 0x00FF);
+	if (V_[x] == condition) {
+		pc_ = pc_ + 4;
+	} else {
+		pc_ = pc_ + 2;
+	}
+	return SUCCESS;
+}
