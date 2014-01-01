@@ -79,6 +79,9 @@ private:
 	unsigned char graphics_[DISPLAY_SIZE];
 	unsigned char key_[REGISTER_SIZE_16];
 
+	/* Opcode Implementation */
+	int op_00E0();	
+
 public:
 	Chip8();
 	~Chip8();
