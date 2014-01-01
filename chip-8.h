@@ -91,6 +91,8 @@ private:
 	int op_7XNN();
  	int op_8XY0();
 
+	int op_9XY0();
+
 public:
 	Chip8();
 	~Chip8();

@@ -75,16 +75,25 @@ int Chip8::op_7XNN() {
 	pc_ = pc_ + 2;
 	return SUCCESS;
 }
-int Chip8::op_8XY0() {
 
+int Chip8::op_8XY0() {
     /* Sets VX to the value of VY.*/
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
-
     V_[y] = V_[x];
-
     pc_ = pc_ + 2;
-
     return SUCCESS;
 }
 
+int Chip8::op_9XY0() {
+	/* Skips the next instruction if VX doesn't equal VY */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	NIBBLE y = (opcode_ & 0x00F0) >> 4;
+	
+	if (V_[x] != V_[y]) {
+		pc_ = pc_ + 4;
+	} else {
+		pc_ = pc_ + 2;
+	}
+	return SUCCESS;
+}

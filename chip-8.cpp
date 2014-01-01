@@ -105,7 +105,8 @@ void Chip8::emulate_cycle() {
 				       default: break;
 			       }
 			       break;
-		case (0x9000): break;
+		case (0x9000): error = op_9XY0();
+			       break;
 		case (0xA000): break;
 		case (0xB000): break;
 		case (0xC000): break;
