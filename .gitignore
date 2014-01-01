@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+*.out
 
 # Compiled Dynamic libraries
 *.so
@@ -12,7 +13,7 @@
 *.la
 *.a
 
-Vim stuff
+# Vim stuff
 *~
 *.swp
 *.swo
