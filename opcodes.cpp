@@ -26,8 +26,8 @@ int Chip8::op_2NNN() {
 
 int Chip8::op_3XNN() {
 	/* Skips the next instruction if VX equals NN */
-	BYTE x = (opcode_ & 0x0F00) >> 8;
-	SHORT condition = (opcode_ & 0x00FF);
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	BYTE condition = (opcode_ & 0x00FF);
 	if (V_[x] == condition) {
 		pc_ = pc_ + 4;
 	} else {
@@ -38,8 +38,8 @@ int Chip8::op_3XNN() {
 
 int Chip8::op_4XNN() {
 	/* Skips the next instruction if VX doesn't equal NN */
-	BYTE x = (opcode_ & 0x0F00) >> 8;
-	SHORT condition = (opcode_ & 0x00FF);
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	BYTE condition = (opcode_ & 0x00FF);
 	if (V_[x] != condition) {
 		pc_ = pc_ + 4;
 	} else {
@@ -48,3 +48,14 @@ int Chip8::op_4XNN() {
 	return SUCCESS;
 }
 
+int Chip8::op_5XY0() {
+	/* Skips the next instruction if VX equals VY */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	NIBBLE y = (opcode_ & 0x00F0) >> 4;
+	if (V_[x] == V_[y]) {
+		pc_ = pc_ + 4;
+	} else {
+		pc_ = pc_ + 2;
+	}
+	return SUCCESS;
+}

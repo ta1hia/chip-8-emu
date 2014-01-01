@@ -12,7 +12,7 @@
 #define SUCCESS			 0
 #define FAILURE			-1
 
-#define BYTE 			unsigned char
-#define SHORT			unsigned short 
+#define NIBBLE 			unsigned char
+#define BYTE			unsigned short 
 
 #endif
