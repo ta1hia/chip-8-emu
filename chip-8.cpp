@@ -36,6 +36,7 @@ void Chip8::initialize() {
 	for (i = 0; i < STACK_SIZE ; i++) {
 		stack_[i] = 0;
 	}
+	sp_ = 0;
 
 	/* Clear registers V0-VF */
 	for (i = 0; i < REGISTER_SIZE_16 ; i++) {
@@ -60,26 +61,31 @@ void Chip8::initialize() {
 }
 
 void Chip8::emulate_cycle() {
+	int error;
 
 	/* Fetch */
 	opcode_ = memory_[pc_] << 8 | memory_[pc_ + 1];
 
 	/* Decode & Execute */
-	switch (opcode && 0xF000) {
-		case (0x0000): switch (opcode && 0x00FF) {
-				       case (0x00E0): break;
+	switch (opcode & 0xF000) {
+		case (0x0000): switch (opcode & 0x00FF) {
+				       case (0x00E0): 
+					       error = op_00E0();
+					       break;
 				       case (0x00EE): break;
 				       default: break;
 			       }
 			       break;
-		case (0x1000): break;
-		case (0x2000): break;
+		case (0x1000): error = op_1NNN();
+			       break;
+		case (0x2000): error = op_2NNN();
+			       break;
 		case (0x3000): break;
 		case (0x4000): break;
 		case (0x5000): break;
 		case (0x6000): break;
 		case (0x7000): break;
-		case (0x8000): switch (opcode && 0x000F) {
+		case (0x8000): switch (opcode & 0x000F) {
 				       case (0x0000): break;
 				       case (0x0001): break;
 				       case (0x0003): break;
@@ -96,13 +102,13 @@ void Chip8::emulate_cycle() {
 		case (0xB000): break;
 		case (0xC000): break;
 		case (0xD000): break;
-		case (0xE000): switch (opcode && 0x00FF) {
+		case (0xE000): switch (opcode & 0x00FF) {
 				       case (0x009E): break;
 				       case (0x00A1): break;
 				       default: break;
 			       }
 			       break;
-		case (0xF000): switch (opcode && 0x00FF) {
+		case (0xF000): switch (opcode & 0x00FF) {
 				       case (0x0007): break;
 				       case (0x000A): break;
 				       case (0x0015): break;
