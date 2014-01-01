@@ -98,10 +98,16 @@ void Chip8::emulate_cycle() {
 		case (0x7000): error = op_7XNN();
 			       break;
 		case (0x8000): switch (opcode_ & 0x000F) {
-				       case (0x0000): break;
-				       case (0x0001): break;
-				       case (0x0003): break;
-				       case (0x0004): break;
+				       case (0x0000): error = op_8XY0();
+                                      break;
+				       case (0x0001): error = op_8XY1();
+                                      break;
+				       case (0x0002): error = op_8XY2();
+                                      break;
+				       case (0x0003): error = op_8XY3();
+                                      break;
+				       case (0x0004): error = op_8XY4();
+                                      break;
 				       case (0x0005): break;
 				       case (0x0006): break;
 				       case (0x0007): break;
