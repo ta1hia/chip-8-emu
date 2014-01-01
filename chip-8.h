@@ -90,11 +90,11 @@ private:
 	int op_6XNN();
 	int op_7XNN();
  
-    	int op_8XY0();
-    	int op_8XY1();
+    int op_8XY0();
+    int op_8XY1();
    	int op_8XY2();
-    	int op_8XY3();
-    	int op_8XY4();
+    int op_8XY3();
+    int op_8XY4();
 
 	int op_9XY0();
 	int op_ANNN();
@@ -103,6 +103,7 @@ private:
 	//DXYN here
 	int op_EX9E();
 	int op_EXA1();
+    int op_FX07();
 	
 public:
 	Chip8();

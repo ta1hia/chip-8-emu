@@ -192,3 +192,13 @@ int Chip8::op_EXA1() {
 	
 	return SUCCESS;
 }
+
+int Chip8::op_FX07() {
+    /* Sets VX to the value of the delay timer */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    
+    V_[x] = delay_timer_;
+    pc_ = pc_ + 2;
+
+    return SUCCESS;
+}
