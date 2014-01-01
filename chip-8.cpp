@@ -1,5 +1,6 @@
 #include <iostream>
-#include "chip8.h"
+#include <cstdlib>
+#include "chip-8.h"
 
 unsigned char chip8_fontset[FONTSET_SIZE] =
 { 	0xF0, 0x90, 0x90, 0x90, 0xF0, //0
@@ -58,6 +59,9 @@ void Chip8::initialize() {
 	delay_timer_ = 0;
 	sound_timer_ = 0;
 
+	/* Initialize rand */
+	srand(time(0));
+
 }
 
 void Chip8::emulate_cycle() {
@@ -108,10 +112,12 @@ void Chip8::emulate_cycle() {
 			       break;
 		case (0xB000): error = op_BNNN();
 			       break;
-		case (0xC000): break;
+		case (0xC000): error = op_CXNN();
+			       break;
 		case (0xD000): break;
 		case (0xE000): switch (opcode & 0x00FF) {
-				       case (0x009E): break;
+				       case (0x009E): error = op_EX9E();
+						      break;
 				       case (0x00A1): break;
 				       default: break;
 			       }
