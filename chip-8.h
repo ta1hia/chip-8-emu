@@ -89,6 +89,7 @@ private:
 	static int op_5XY0();
 	static int op_6XNN();
 	static int op_7XNN();
+    static int op_8XY0();
 
 public:
 	Chip8();
