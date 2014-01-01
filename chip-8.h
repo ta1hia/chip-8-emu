@@ -81,15 +81,15 @@ private:
 	unsigned char 	key_[REGISTER_SIZE_16];
 
 	/* Opcode Implementation */
-	static int op_00E0();	
-	static int op_1NNN();
-	static int op_2NNN();
-	static int op_3XNN();
-	static int op_4XNN();
-	static int op_5XY0();
-	static int op_6XNN();
-	static int op_7XNN();
-    static int op_8XY0();
+	int op_00E0();	
+	int op_1NNN();
+	int op_2NNN();
+	int op_3XNN();
+	int op_4XNN();
+	int op_5XY0();
+	int op_6XNN();
+	int op_7XNN();
+ 	int op_8XY0();
 
 public:
 	Chip8();

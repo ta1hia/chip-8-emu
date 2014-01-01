@@ -1,5 +1,6 @@
+#include <iostream>
 #include <GL/glut.h>
-#include "chip8.h"
+#include "chip-8.h"
 
 using namespace std;
 
