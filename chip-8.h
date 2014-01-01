@@ -64,23 +64,24 @@
 class Chip8 {
 
 private:
-	unsigned short pc_;
-	unsigned short sp_;
-	unsigned short I_;
-	unsigned short opcode_;
+	unsigned short 	pc_;
+	unsigned short 	sp_;
+	unsigned short 	I_;
+	unsigned short 	opcode_;
 
-	unsigned char delay_timer_;
-	unsigned char sound_timer_;
+	unsigned char 	delay_timer_;
+	unsigned char 	sound_timer_;
 
-	unsigned char V_[REGISTER_SIZE_16];
-	unsigned short stack_[STACK_SIZE];
-	unsigned char memory_[RAM_SIZE];
+	unsigned char 	V_[REGISTER_SIZE_16];
+	unsigned short 	stack_[STACK_SIZE];
+	unsigned char 	memory_[RAM_SIZE];
 
-	unsigned char graphics_[DISPLAY_SIZE];
-	unsigned char key_[REGISTER_SIZE_16];
+	bool 		display_updated_flag_;
+	unsigned char 	graphics_[DISPLAY_SIZE];
+	unsigned char 	key_[REGISTER_SIZE_16];
 
 	/* Opcode Implementation */
-	int op_00E0();	
+	static int op_00E0();	
 
 public:
 	Chip8();
