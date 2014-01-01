@@ -112,7 +112,8 @@ void Chip8::emulate_cycle() {
 			       break;
 		case (0xB000): error = op_BNNN();
 			       break;
-		case (0xC000): break;
+		case (0xC000): error = op_CXNN();
+			       break;
 		case (0xD000): break;
 		case (0xE000): switch (opcode & 0x00FF) {
 				       case (0x009E): break;

@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "chip-8.h"
 #include "defs.h"
 
@@ -108,5 +109,14 @@ int Chip8::op_ANNN() {
 int Chip8::op_BNNN() {
 	/* Jumps to the address NNN plus V0 */
 	pc_ = V_[0] + (opcode_ & 0x0FFF);
+	return SUCCESS;
+}
+
+int Chip8::op_CXNN() {
+	/* Sets VX to a random number and NN */
+	NIBBLE x = (opcode_ & 0x0F00) >> 8;
+	BYTE data = (opcode_ & 0x00FF);
+	V_[x] = (rand() % 0xFF) & data;
+	pc_ = pc_ + 2;
 	return SUCCESS;
 }

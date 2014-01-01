@@ -94,7 +94,8 @@ private:
 	int op_9XY0();
 	int op_ANNN();
 	int op_BNNN();
-
+	int op_CXNN();
+	
 public:
 	Chip8();
 	~Chip8();
