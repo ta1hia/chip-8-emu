@@ -111,6 +111,11 @@ public:
 
 	void initialize();
 	void emulate_cycle();
+
+    //test methods
+    void testPrintV();
+    void testPrintRegisters();
+    void testPrintStack();
 };
 
 #endif 
