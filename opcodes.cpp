@@ -77,7 +77,7 @@ int Chip8::op_7XNN() {
 }
 int Chip8::op_8XY0() {
 
-    /* Sets VX to the value of VY.*/
+    /* Sets VX to the value of VY */
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
 
