@@ -85,11 +85,6 @@ public:
 
 	void initialize();
 	void emulate_cycle();
-
-	short get_pc();
-	int set_pc();
-	int increment_pc();	
-
 };
 
 #endif 

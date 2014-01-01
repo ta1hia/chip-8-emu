@@ -59,3 +59,10 @@ void Chip8::initialize() {
 
 }
 
+void Chip8::emulate_cycle() {
+
+	/* Fetch */
+	opcode_ = memory_[pc_] << 8 | memory_[pc_ + 1];
+
+	/* Decode & Execute */
+}
