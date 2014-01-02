@@ -43,8 +43,42 @@ void Chip8::testLoadV() {
 }
 
 void Chip8::test8XYN() {
-
     
+/* op_8XY0 */
+    testLoadV();
+    opcode_ = 0x83a0;
+    op_8XY0();
+    testPrintV();
+
+/* op_8XY1 */
+    testLoadV();
+    opcode_ = 0x8141;
+    op_8XY1();
+    testPrintV();
+
+/* op_8XY2 */
+    testLoadV();
+    opcode_ = 0x8502;
+    op_8XY2();
+    testPrintV();
+
+/* op_8XY3 */
+    testLoadV();
+    opcode_ = 0x8a63;
+    op_8XY3();
+    testPrintV();
+
+/* op_8XY4 with carry */
+    testLoadV();
+    opcode_ = 0x88a4;
+    op_8XY4();
+    testPrintV();
+
+/* op_8XY4 no carry */
+    testLoadV();
+    opcode_ = 0x8a14;
+    op_8XY4();
+    testPrintV();
 
 }
 /*

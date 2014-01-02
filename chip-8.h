@@ -89,11 +89,13 @@ private:
 	int op_5XY0();
 	int op_6XNN();
 	int op_7XNN();
+
     int op_8XY0();
     int op_8XY1();
    	int op_8XY2();
     int op_8XY3();
     int op_8XY4();
+    
 	int op_9XY0();
 	int op_ANNN();
 	int op_BNNN();
@@ -119,7 +121,7 @@ public:
     void testPrintRegisters();
     void testPrintStack();
     void testLoadV();
-    void Chip8::test8XYN() {
+    void test8XYN();
 };
 
 #endif 
