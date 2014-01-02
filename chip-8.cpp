@@ -139,7 +139,8 @@ void Chip8::emulate_cycle() {
                                       break;
 				       case (0x0015): error = op_FX15();
                                       break;
-				       case (0x0018): break;
+				       case (0x0018): error = op_FX18();
+                                      break;
 				       case (0x001E): break;
 				       case (0x0029): break;
 				       case (0x0033): break;
