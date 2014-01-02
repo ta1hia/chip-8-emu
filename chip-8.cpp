@@ -58,10 +58,10 @@ void Chip8::emulate_cycle() {
 	/* Decode & Execute */
 	switch (opcode_ & 0xF000) {
 		case (0x0000): switch (opcode_ & 0x00FF) {
-				       case (0x00E0): 
-					       error = op_00E0();
-					       break;
-				       case (0x00EE): break;
+				       case (0x00E0): error = op_00E0();
+                                      break;
+				       case (0x00EE): error = op_00EE();
+                                      break;
 				       default: break;
 			       }
 			       break;
@@ -129,8 +129,10 @@ void Chip8::emulate_cycle() {
                                       break;
 				       case (0x0033): error = op_FX33();
                                       break;
-				       case (0x0055): break;
-				       case (0x0065): break;
+				       case (0x0055): error = op_FX55();
+                                      break;
+				       case (0x0065): error = op_FX65();
+                                      break;
 				       default: break;
 			       }
 			       break;

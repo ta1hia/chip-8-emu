@@ -12,6 +12,18 @@ int Chip8::op_00E0() {
 	return SUCCESS;
 }
 
+int Chip8::op_00EE() {
+    /* Returns from a subroutine */
+
+    if (sp_ == 0x0) return FAILURE;
+
+    sp_ -= 1;
+    pc_ = stack_[sp_] + 2;
+    stack_[sp_] = 0;
+
+    return SUCCESS;
+}
+
 int Chip8::op_1NNN() {
 	/* Jumps to address NNN */
 	pc_ = opcode_ & 0x0FFF;
@@ -19,9 +31,13 @@ int Chip8::op_1NNN() {
 }
 int Chip8::op_2NNN() {
 	/* Calls subroutine at NNN */
+
+    if (sp_ + 1 > 0xF) return FAILURE;
+
 	stack_[sp_] = pc_;
 	sp_ += 1;
 	pc_ = opcode_ & 0x0FFF;
+
 	return SUCCESS;
 }
 
@@ -293,6 +309,30 @@ int Chip8::op_FX33() {
     memory_[I_ + 1] =   (V_[x] / 10) % 10;
     memory_[I_ + 2] =   V_[x] % 10;         /* LSD */
 
-    pc_ = pc_ + 1;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip8::op_FX55() {
+    /* Stores V0 to VX in memory starting at address I */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    for (int i = 0; i < x + 1 ; i++) {
+        memory_[I_ + i] = V_[x];
+    }
+
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip8::op_FX65() {
+    /* Fills V0 to VX with values from memory starting at address I */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    for (int i = 0; i < x + 1 ; i++) {
+        V_[x] = memory_[I_ + i];
+    }
+
+    pc_ = pc_ + 2;
     return SUCCESS;
 }
