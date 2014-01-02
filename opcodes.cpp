@@ -81,7 +81,7 @@ int Chip8::op_8XY0() {
     /* Sets VX to the value of VY.*/
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
-    V_[y] = V_[x];
+    V_[x] = V_[y];
     pc_ = pc_ + 2;
     return SUCCESS;
 }
@@ -124,7 +124,7 @@ int Chip8::op_8XY4() {
     NIBBLE buffer = V_[x] + V_[y];
 
     V_[CARRY_FLAG] = (buffer & 0xF0) >> 4;
-    V_[x] = V_[x] + V_[y];
+    V_[x] = (V_[x] + V_[y]) & 0x0F ;
 
     pc_ = pc_ +  2;
     return SUCCESS;

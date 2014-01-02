@@ -89,11 +89,13 @@ private:
 	int op_5XY0();
 	int op_6XNN();
 	int op_7XNN();
+
     int op_8XY0();
     int op_8XY1();
    	int op_8XY2();
     int op_8XY3();
     int op_8XY4();
+    
 	int op_9XY0();
 	int op_ANNN();
 	int op_BNNN();
@@ -121,6 +123,10 @@ public:
     void testPrintV();
     void testPrintRegisters();
     void testPrintStack();
+<<<<<<< HEAD
+    void testLoadV();
+    void test8XYN();
+=======
 };
 
 unsigned char chip8_fontset[FONTSET_SIZE] =
@@ -140,6 +146,7 @@ unsigned char chip8_fontset[FONTSET_SIZE] =
 	0xE0, 0x90, 0x90, 0x90, 0xE0, //D
 	0xF0, 0x80, 0xF0, 0x80, 0xF0, //E
 	0xF0, 0x80, 0xF0, 0x80, 0x80  //F
+>>>>>>> b608945210b7b87669797fe0611a603f3c87e07f
 };
 
 #endif 

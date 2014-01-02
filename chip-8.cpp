@@ -38,7 +38,7 @@ void Chip8::initialize() {
 	/* Load fontset - part of interpretter region */
 	for (int i = 0; i < FONTSET_SIZE ; i++) {
 		memory_[i] = chip8_fontset[i];
-	};
+	}
 
 	/* Reset timers */
 	delay_timer_ = 0;
