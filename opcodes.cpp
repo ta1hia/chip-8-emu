@@ -294,3 +294,15 @@ int Chip8::op_FX55() {
     pc_ = pc_ + 2;
     return SUCCESS;
 }
+
+int Chip8::op_FX65() {
+    /* Fills V0 to VX with values from memory starting at address I */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    for (int i = 0; i < x + 1 ; i++) {
+        V_[x] = memory_[I_ + i];
+    }
+
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}

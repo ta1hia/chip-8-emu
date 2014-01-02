@@ -111,6 +111,7 @@ private:
     int op_FX29();
     int op_FX33();
     int op_FX55();
+    int op_FX65();
 	
 public:
 	Chip8();
@@ -123,10 +124,8 @@ public:
     void testPrintV();
     void testPrintRegisters();
     void testPrintStack();
-<<<<<<< HEAD
     void testLoadV();
     void test8XYN();
-=======
 };
 
 unsigned char chip8_fontset[FONTSET_SIZE] =
@@ -146,7 +145,6 @@ unsigned char chip8_fontset[FONTSET_SIZE] =
 	0xE0, 0x90, 0x90, 0x90, 0xE0, //D
 	0xF0, 0x80, 0xF0, 0x80, 0xF0, //E
 	0xF0, 0x80, 0xF0, 0x80, 0x80  //F
->>>>>>> b608945210b7b87669797fe0611a603f3c87e07f
 };
 
 #endif 
