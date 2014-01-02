@@ -38,10 +38,15 @@ void Chip8::testPrintStack() {
 void Chip8::testLoadV() {
     
     for( int i = 0; i < REGISTER_SIZE_16; i++) {
-        V_[i] = 0xff;
+        V_[i] = i;
     }
 }
 
+void Chip8::test8XYN() {
+
+    
+
+}
 /*
     test methods
     void testPrintV();

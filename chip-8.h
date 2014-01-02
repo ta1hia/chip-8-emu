@@ -119,6 +119,7 @@ public:
     void testPrintRegisters();
     void testPrintStack();
     void testLoadV();
+    void Chip8::test8XYN() {
 };
 
 #endif 
