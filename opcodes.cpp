@@ -244,3 +244,11 @@ int Chip8::op_FX18() {
     pc = pc_ + 2;
     return SUCCESS;
 }
+
+int Chip8::op_FX1E() {
+    /* Adds VX to I */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    I_ += x;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
