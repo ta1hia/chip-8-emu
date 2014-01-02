@@ -252,3 +252,21 @@ int Chip8::op_FX1E() {
     pc_ = pc_ + 2;
     return SUCCESS;
 }
+
+int Chip8::op_FX29() {
+    /* Sets I to the location of the sprite for the character in VX
+     * Characters 0-F (in hexadecimal) are represented by a 4x5 font
+     */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    pc_ = pc_ + 2;
+
+    if (V_[x] >= 0x0 && V_[x] < 0xF) {
+        /* Set I to the start index in chip8_fontset */
+        I_ = x * 5;
+        return SUCCESS;
+    } else {
+        return FAILURE;
+    }
+
+}
