@@ -130,6 +130,20 @@ int Chip8::op_8XY4() {
     return SUCCESS;
 }
 
+int Chip8::op_8XY5() {
+ 
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+    NIBBLE y = (opcode_ & 0x00F0) >> 4;
+
+    NIBBLE buffer = V_[x] - V_[y];
+
+}
+int Chip8::op_8XY6();
+int Chip8::op_8XY7();
+int Chip8::op_8XYE();
+    
+
+
 int Chip8::op_9XY0() {
     /* Skips the next instruction if VX doesn't equal VY */
 	NIBBLE x = (opcode_ & 0x0F00) >> 8;

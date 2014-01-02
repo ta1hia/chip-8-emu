@@ -95,6 +95,10 @@ private:
    	int op_8XY2();
     int op_8XY3();
     int op_8XY4();
+    int op_8XY5();
+    int op_8XY6();
+    int op_8XY7();
+    int op_8XYE();
     
 	int op_9XY0();
 	int op_ANNN();
