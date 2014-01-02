@@ -270,3 +270,15 @@ int Chip8::op_FX29() {
     }
 
 }
+
+int Chip8::op_FX33() {
+    /* Store BCD representation of Vx in memory locations I, I+1, and I+2 */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    memory_[I_] =       V_[x] / 100;        /* MSD */
+    memory_[I_ + 1] =   (V_[x] / 10) % 10;
+    memory_[I_ + 2] =   V_[x] % 10;         /* LSD */
+
+    pc_ = pc_ + 1;
+    return SUCCESS;
+}
