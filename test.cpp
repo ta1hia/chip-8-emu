@@ -10,38 +10,45 @@
 using namespace std;
 
 void Chip8::testPrintV() {
-    
+    cout << "print V registers: ";
+
     for( int i = 0; i < REGISTER_SIZE_16; i++) {
-        cout << hex << V_[i] << ", ";
+        cout << hex << int(V_[i]) << ", ";
     }
         cout << endl;
 }
 
 void Chip8::testPrintRegisters() {
     
-        char h = 0x0d;
-
-        cout << "pc: " << pc_ << endl;
-        cout << "sp: " << sp_ << endl;
-        cout << "I: " << I_ << endl;
-        cout << "opcode: " << opcode_ << endl;
-        cout << "hex 13: " << hex << h << endl;
-
+        cout << "pc: " << hex << int(pc_) << endl;
+        cout << "sp: " << hex << int(sp_) << endl;
+        cout << "I: " << hex  << int(I_) << endl;
+        cout << "opcode: " << hex << int(opcode_) << endl;
+        
         cout << endl;
 }
 
+void Chip8::testPrintStack() {
+    cout << "print Stack: ";
+    for( int i = 0; i < STACK_SIZE; i++) {
+        cout << hex << int(stack_[i]) << ", ";
+    }
+        cout << endl;
+}
 void Chip8::testLoadV() {
     
     for( int i = 0; i < REGISTER_SIZE_16; i++) {
-        V_[i] = 0x0d;
+        V_[i] = 0xff;
     }
 }
+
 /*
     test methods
     void testPrintV();
     void testPrintRegisters();
     void testPrintStack();
-    
+    void testLoadV();
+
     unsigned short 	pc_;
 	unsigned short 	sp_;
 	unsigned short 	I_;

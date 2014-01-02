@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
 
     chip8.testLoadV();
     chip8.testPrintV();
+    chip8.testPrintStack();
 
 	return 0;
 }
