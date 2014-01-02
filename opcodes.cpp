@@ -279,6 +279,18 @@ int Chip8::op_FX33() {
     memory_[I_ + 1] =   (V_[x] / 10) % 10;
     memory_[I_ + 2] =   V_[x] % 10;         /* LSD */
 
-    pc_ = pc_ + 1;
+    pc_ = pc_ + 2;
+    return SUCCESS;
+}
+
+int Chip8::op_FX55() {
+    /* Stores V0 to VX in memory starting at address I */
+    NIBBLE x = (opcode_ & 0x0F00) >> 8;
+
+    for (int i = 0; i < x + 1 ; i++) {
+        memory_[I_ + i] = V_[x];
+    }
+
+    pc_ = pc_ + 2;
     return SUCCESS;
 }
