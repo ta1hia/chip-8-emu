@@ -202,3 +202,29 @@ int Chip8::op_FX07() {
 
     return SUCCESS;
 }
+
+int Chip8::op_FX0A() {
+    /* A key press is awaited. When key press detected,
+     * it is stored in VX */
+
+    bool is_key_pressed = false;
+
+    for (int i = 0; i < REGISTER_SIZE_16 ; i ++) {
+
+        if (key_[i] != 0) {
+            NIBBLE x = (opcode_ & 0x0F00) >> 8;
+            is_key_pressed = true;
+            V_[x] = key_[i];
+            break;
+        }
+    }
+
+    /* Advance PC if key press detected. Otherwise try again
+     * next cycle
+     */
+    if (is_key_pressed) {
+        pc_ = pc_ + 2;
+    }
+
+    return SUCCESS;
+}
