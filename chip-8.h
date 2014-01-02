@@ -116,6 +116,7 @@ public:
     void testPrintV();
     void testPrintRegisters();
     void testPrintStack();
+    void testLoadV();
 };
 
 #endif 

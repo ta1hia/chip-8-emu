@@ -11,5 +11,8 @@ int main(int argc, char **argv) {
     chip8.testPrintV();
     chip8.testPrintRegisters();
 
+    chip8.testLoadV();
+    chip8.testPrintV();
+
 	return 0;
 }
