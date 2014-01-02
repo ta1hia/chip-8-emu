@@ -12,6 +12,18 @@ int Chip8::op_00E0() {
 	return SUCCESS;
 }
 
+int Chip8::op_00EE() {
+    /* Returns from a subroutine */
+
+    if (sp_ == 0x0) return FAILURE;
+
+    sp_ -= 1;
+    pc_ = stack_[sp_] + 2;
+    stack_[sp_] = 0;
+
+    return SUCCESS;
+}
+
 int Chip8::op_1NNN() {
 	/* Jumps to address NNN */
 	pc_ = opcode_ & 0x0FFF;
@@ -19,9 +31,13 @@ int Chip8::op_1NNN() {
 }
 int Chip8::op_2NNN() {
 	/* Calls subroutine at NNN */
+
+    if (sp_ + 1 > 0xF) return FAILURE;
+
 	stack_[sp_] = pc_;
 	sp_ += 1;
 	pc_ = opcode_ & 0x0FFF;
+
 	return SUCCESS;
 }
 

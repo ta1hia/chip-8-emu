@@ -82,6 +82,8 @@ private:
 
 	/* Opcode Implementation */
 	int op_00E0();	
+    int op_00EE();
+
 	int op_1NNN();
 	int op_2NNN();
 	int op_3XNN();
@@ -101,6 +103,7 @@ private:
 	int op_BNNN();
 	int op_CXNN();
 	//DXYN here
+
 	int op_EX9E();
 	int op_EXA1();
     int op_FX07();
