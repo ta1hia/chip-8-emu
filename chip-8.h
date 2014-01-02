@@ -89,13 +89,11 @@ private:
 	int op_5XY0();
 	int op_6XNN();
 	int op_7XNN();
- 
     int op_8XY0();
     int op_8XY1();
    	int op_8XY2();
     int op_8XY3();
     int op_8XY4();
-
 	int op_9XY0();
 	int op_ANNN();
 	int op_BNNN();
@@ -104,6 +102,10 @@ private:
 	int op_EX9E();
 	int op_EXA1();
     int op_FX07();
+    int op_FX0A();
+    int op_FX15();
+    int op_FX18();
+    int op_FX1E();
 	
 public:
 	Chip8();
