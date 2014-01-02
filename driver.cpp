@@ -3,6 +3,7 @@
 
 #include <GL/glut.h>
 #include "chip-8.h"
+#include "defs.h"
 
 using namespace std;
 

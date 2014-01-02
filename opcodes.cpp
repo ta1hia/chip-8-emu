@@ -153,10 +153,12 @@ int Chip8::op_8XY5() {
 
     NIBBLE buffer = V_[x] - V_[y];
 
+    return 0;
+
 }
-int Chip8::op_8XY6();
-int Chip8::op_8XY7();
-int Chip8::op_8XYE();
+//int Chip8::op_8XY6();
+//int Chip8::op_8XY7();
+//int Chip8::op_8XYE();
     
 
 
