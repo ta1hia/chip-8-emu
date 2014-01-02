@@ -105,6 +105,7 @@ private:
 	int op_EXA1();
     int op_FX07();
     int op_FX0A();
+    int op_FX15();
 	
 public:
 	Chip8();

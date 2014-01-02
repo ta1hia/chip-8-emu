@@ -228,3 +228,11 @@ int Chip8::op_FX0A() {
 
     return SUCCESS;
 }
+
+int Chip8::op_FX15() {
+    /* Sets the delay timer to VX */
+    NIBBLE time = (opcode_ & 0x0F00) >> 8;
+    delay_timer_ = time;
+    pc = pc_ + 2;
+    return SUCCESS;
+}
