@@ -80,7 +80,21 @@ void Chip8::test8XYN() {
     op_8XY4();
     testPrintV();
 
+/* op_8XY5 with borrow */
+    testLoadV();
+    opcode_ = 0x84a5;
+    op_8XY5();
+    testPrintV();
+
+
+/* op_8XY5 no borrow */
+    testLoadV();
+    opcode_ = 0x8a45;
+    op_8XY5();
+    testPrintV();
 }
+
+
 /*
     test methods
     void testPrintV();

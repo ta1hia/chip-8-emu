@@ -19,13 +19,5 @@ int main(int argc, char **argv) {
 
     chip8.test8XYN();
 
-
-    char x,y;
-    x = 5;
-    y = 2;
-
-    cout << x << " : 0x" << hex << x << endl;
-    cout << y << " : 0x" << hex << y << endl;
-
 	return 0;
 }

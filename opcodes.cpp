@@ -139,8 +139,8 @@ int Chip8::op_8XY4() {
 
     NIBBLE buffer = V_[x] + V_[y];
 
-    V_[CARRY_FLAG] = (buffer & 0xF0) >> 4;
-    V_[x] = (V_[x] + V_[y]) & 0x0F ;
+    V_[CARRY_FLAG] = (buffer & 0x00F0) >> 4;
+    V_[x] = (V_[x] + V_[y]) & 0x000F ;
 
     pc_ = pc_ +  2;
     return SUCCESS;
@@ -151,17 +151,47 @@ int Chip8::op_8XY5() {
     NIBBLE x = (opcode_ & 0x0F00) >> 8;
     NIBBLE y = (opcode_ & 0x00F0) >> 4;
 
-    NIBBLE buffer = V_[x] - V_[y];
+    if ( V_[x] < V_[y] ) {
+        V_[CARRY_FLAG] = 0;
+    }
 
-    return 0;
+    else {
+        V_[CARRY_FLAG] = 1;
+    }
+
+    V_[x] =  V_[x] - V_[y];
+
+    return SUCCESS;
 
 }
-//int Chip8::op_8XY6();
-//int Chip8::op_8XY7();
-//int Chip8::op_8XYE();
-    
 
+int Chip8::op_8XY6() {
+    /*
+     * Shifts VX right by one. VF is set to the value of the least 
+     * significant bit of VX before the shift.[2]
+     */
 
+    NIBBLE x = 0;
+
+    return SUCCESS;
+}
+int Chip8::op_8XY7() {
+/*
+ * Sets VX to VY minus VX. VF is set to 0 when there's a borrow, 
+ * and 1 when there isn't.
+ */
+
+    return SUCCESS;
+}
+
+int Chip8::op_8XYE() {
+/*
+ * Shifts VX left by one. VF is set to the value of the most significant
+ * bit of VX before the shift.[2]
+ */
+
+    return SUCCESS;
+}
 int Chip8::op_9XY0() {
     /* Skips the next instruction if VX doesn't equal VY */
 	NIBBLE x = (opcode_ & 0x0F00) >> 8;
