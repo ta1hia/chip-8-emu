@@ -127,6 +127,7 @@ public:
 
 	void initialize();
 	void emulate_cycle();
+	void load();
 
     //test methods
     void testPrintV();

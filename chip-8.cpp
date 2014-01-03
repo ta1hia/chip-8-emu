@@ -4,7 +4,7 @@
 
 unsigned char const chip8_fontset[FONTSET_SIZE] =
 {   	0xF0, 0x90, 0x90, 0x90, 0xF0, //0
-	    0x20, 0x60, 0x20, 0x20, 0x70, //1
+	0x20, 0x60, 0x20, 0x20, 0x70, //1
     	0xF0, 0x10, 0xF0, 0x80, 0xF0, //2
     	0xF0, 0x10, 0xF0, 0x10, 0xF0, //3
     	0x90, 0x90, 0xF0, 0x10, 0x10, //4
@@ -66,6 +66,43 @@ void Chip8::initialize() {
 	/* Initialize rand */
 	srand(time(0));
 
+}
+
+void Chip8::load() {
+
+    initialize();
+
+    /* Open ROM (hardcoded for now) */
+    FILE* rom = fopen("pong", "rb");
+
+    /* Get ROM size */
+    fseek(rom, 0, SEEK_END);
+    long size = ftell(rom);
+    rewind(rom);
+
+    /* Copy ROM into buffer, and then into memory */
+    char* buf = (char*) malloc(sizeof(char) * size);
+    if (buf == NULL) {
+        return FAILURE;
+    }
+    size_t result = fread(buf, sizeof(char), (size_t)size, rom);
+    if (result != size) {
+        return FAILURE;
+    }
+    if ((4096-512) > size){
+        for (int i = 0; i < size; ++i) {
+            memory_[i + 512] = (uint8_t)buf[i];   /* Start loading at 0x200 (=512) */
+        }
+    }
+    else {
+        std::cerr << "Cannot load ROM: size is larger than memory." << std::endl;
+        return false;
+    }
+
+    fclose(rom);
+    free(buf);
+
+    return SUCCESS;
 }
 
 void Chip8::emulate_cycle() {
